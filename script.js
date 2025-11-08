@@ -112,22 +112,15 @@ function moveDown() {
 }
 
 function freeze() {
-    // Si la pieza toca el fondo o toca una pieza ya congelada ('taken')
     if (current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
-        
-        // 1. Marcar la pieza actual como 'taken'
         current.forEach(index => squares[currentPosition + index].classList.add('taken'));
-        
-        // 2. Iniciar una nueva pieza
         random = nextRandom; 
         nextRandom = Math.floor(Math.random() * theTetrominoes.length);
         currentColor = random + 1;
         currentRotation = 0;
         current = theTetrominoes[random][currentRotation];
-        currentPosition = Math.floor(width / 2) - 1; // Centro de la primera fila
+        currentPosition = Math.floor(width / 2) - 1;
         draw();
-        
-        // 3. Comprobar líneas y fin de juego
         addScore();
         gameOver();
     }
@@ -136,11 +129,9 @@ function freeze() {
 function moveLeft() {
     undraw();
     const isAtLeftEdge = current.some(index => (currentPosition + index) % width === 0);
-    
-    // Mover si no está en el borde o si no choca
     if (!isAtLeftEdge) currentPosition -= 1;
     if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
-        currentPosition += 1; // Deshacer el movimiento si colisiona
+        currentPosition += 1;
     }
     draw();
 }
@@ -148,10 +139,9 @@ function moveLeft() {
 function moveRight() {
     undraw();
     const isAtRightEdge = current.some(index => (currentPosition + index) % width === width - 1);
-
     if (!isAtRightEdge) currentPosition += 1;
     if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
-        currentPosition -= 1; // Deshacer el movimiento si colisiona
+        currentPosition -= 1;
     }
     draw();
 }
@@ -160,59 +150,42 @@ function rotate() {
     undraw();
     const originalRotation = currentRotation;
     currentRotation++;
-    
     if(currentRotation === current.length) { 
         currentRotation = 0; 
     }
     current = theTetrominoes[random][currentRotation];
-    
     const isNextToLeftEdge = current.some(index => (currentPosition + index) % width === 0);
     const isNextToRightEdge = current.some(index => (currentPosition + index) % width === width - 1);
 
     if (current.some(index => squares[currentPosition + index].classList.contains('taken')) || 
         (isNextToLeftEdge && isNextToRightEdge) ) {
-        
-        // Deshacer la rotación si causa un problema
         currentRotation = originalRotation;
         current = theTetrominoes[random][currentRotation];
     }
     draw();
 }
 
-// Controlar los movimientos con las teclas
+// Control con teclado
 function control(e) {
     if (timerId === null) return; 
-    
-    if (e.keyCode === 37) { // Flecha Izquierda
-        moveLeft();
-    } else if (e.keyCode === 38) { // Flecha Arriba (Rotar)
-        rotate();
-    } else if (e.keyCode === 39) { // Flecha Derecha
-        moveRight();
-    } else if (e.keyCode === 40) { // Flecha Abajo (Caída rápida)
-        moveDown();
-    }
+    if (e.keyCode === 37) moveLeft();
+    else if (e.keyCode === 38) rotate();
+    else if (e.keyCode === 39) moveRight();
+    else if (e.keyCode === 40) moveDown();
 }
 document.addEventListener('keydown', control);
 
 function addScore() {
     for (let i = 0; i < totalCells; i += width) {
         const row = [];
-        for (let j = 0; j < width; j++) {
-            row.push(i + j);
-        }
-
+        for (let j = 0; j < width; j++) row.push(i + j);
         if (row.every(index => squares[index].classList.contains('taken'))) {
             score += 10;
             scoreDisplay.innerHTML = score;
-            
-            // Si quieres añadir sonido de línea, actívalo aquí: lineClearSound.play();
-            
             row.forEach(index => {
                 squares[index].classList.remove('taken');
                 squares[index].className = '';
             });
-            
             const squaresRemoved = squares.splice(i, width);
             squares = squaresRemoved.concat(squares);
             squares.forEach(cell => grid.appendChild(cell));
@@ -220,37 +193,29 @@ function addScore() {
     }
 }
 
-// Función de Inicio/Pausa/Reiniciar
+// Botón de inicio/pausa/reinicio
 startButton.addEventListener('click', () => {
-    // Si el botón dice "Reiniciar Juego", recarga la página
     if (startButton.textContent === 'Reiniciar Juego') {
         window.location.reload();
         return;
     }
-    
     if (timerId) {
         clearInterval(timerId);
         timerId = null;
-        // Si tienes música: bgMusic.pause(); 
-        startButton.textContent = 'Reanudar'; // Muestra que está en pausa
+        startButton.textContent = 'Reanudar';
     } else {
-        // Si el juego está en pausa, reanudar
         draw();
         timerId = setInterval(moveDown, 1000); 
-        // Si tienes música: bgMusic.play(); 
-        startButton.textContent = 'Pausa'; // Muestra que está en juego
+        startButton.textContent = 'Pausa';
     }
 });
 
-// Función de Fin del Juego
 function gameOver() {
     if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
         scoreDisplay.innerHTML = '¡Fin del Juego! Puntuación Final: ' + score;
         clearInterval(timerId);
         timerId = null;
         document.removeEventListener('keydown', control);
-        
-        // Desactiva el botón y cambia su texto para Reiniciar
         startButton.textContent = 'Reiniciar Juego'; 
     }
 }
@@ -258,4 +223,37 @@ function gameOver() {
 // --- Inicialización del Juego ---
 draw();
 timerId = setInterval(moveDown, 1000);
-startButton.textContent = 'Pausa'; // Establece el texto inicial del botón
+startButton.textContent = 'Pausa';
+
+// --- NUEVO: Controles táctiles (swipes para móviles) ---
+let startX, startY, endX, endY;
+
+document.addEventListener("touchstart", function(event) {
+  startX = event.touches[0].clientX;
+  startY = event.touches[0].clientY;
+}, false);
+
+document.addEventListener("touchend", function(event) {
+  endX = event.changedTouches[0].clientX;
+  endY = event.changedTouches[0].clientY;
+  handleSwipe();
+}, false);
+
+function handleSwipe() {
+  const diffX = endX - startX;
+  const diffY = endY - startY;
+
+  if (Math.abs(diffX) > Math.abs(diffY)) {
+    if (diffX > 30) {
+      moveRight(); 
+    } else if (diffX < -30) {
+      moveLeft();
+    }
+  } else {
+    if (diffY > 30) {
+      moveDown();
+    } else if (diffY < -30) {
+      rotate();
+    }
+  }
+}
