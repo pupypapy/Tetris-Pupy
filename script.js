@@ -4,7 +4,8 @@ let touchStartY = 0;
 let touchEndX = 0;
 let touchEndY = 0;
 
-const swipeZone = document.getElementById("gameCanvas") || document.body; // ajusta el ID si tu canvas tiene otro nombre
+// Puedes usar el contenedor del tablero para los gestos
+const swipeZone = document.querySelector(".grid-container") || document.body;
 
 swipeZone.addEventListener("touchstart", function(e) {
   const touch = e.touches[0];
@@ -21,9 +22,7 @@ swipeZone.addEventListener("touchmove", function(e) {
 swipeZone.addEventListener("touchend", function() {
   const dx = touchEndX - touchStartX;
   const dy = touchEndY - touchStartY;
-
-  // distancia mínima para considerar un movimiento
-  const threshold = 30;
+  const threshold = 30; // distancia mínima para considerar movimiento
 
   if (Math.abs(dx) > Math.abs(dy)) {
     // Movimiento horizontal
@@ -33,5 +32,13 @@ swipeZone.addEventListener("touchend", function() {
       moveLeft(); // deslizar a la izquierda
     }
   } else {
-    // Movimiento vertical
-    if (dy >
+    // Movimiento vertical o toque
+    if (dy > threshold) {
+      moveDown(); // deslizar hacia abajo
+    } else if (Math.abs(dx) < 10 && Math.abs(dy) < 10) {
+      rotate(); // toque rápido = rotar pieza
+    }
+  }
+
+  // Reiniciar valores
+  touchStartX
