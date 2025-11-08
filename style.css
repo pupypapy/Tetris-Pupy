@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+h1 {
+    color: #333;
+}
+
+/* Define el contenedor del tablero (20 celdas * 20px = 400px; 30 celdas * 20px = 600px) */
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px; 
+    height: 600px; 
+    border: 5px solid #000;
+    background-color: #111;
+}
+
+/* Estilo base para cada celda (div) del tablero */
+.grid-container > div {
+    width: 20px;
+    height: 20px;
+    box-sizing: border-box; 
+    border: 1px solid #222;
+}
+
+/* Clases para los colores de las 5 piezas */
+.tetromino-color-1 { background-color: cyan; border: 1px solid darkcyan; }    /* I */
+.tetromino-color-2 { background-color: blue; border: 1px solid darkblue; }     /* J */
+.tetromino-color-3 { background-color: orange; border: 1px solid darkorange; } /* L */
+.tetromino-color-4 { background-color: yellow; border: 1px solid goldenrod; }  /* O */
+.tetromino-color-5 { background-color: limegreen; border: 1px solid darkgreen;}/* S */
+.tetromino-color-6 { background-color: purple; border: 1px solid darkmagenta; }/* T */
+.tetromino-color-7 { background-color: red; border: 1px solid darkred; }      /* Z */
+
+.info-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
