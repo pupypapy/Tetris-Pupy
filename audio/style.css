@@ -77,7 +77,7 @@ body {
     background-color: #f0f0f0;
 }
 
-/* **ESTILO CLAVE:** Resaltar la canción actualmente seleccionada (como el fondo verde en tu imagen) */
+/* ESTILO CLAVE: Resaltar la canción actualmente seleccionada */
 .cancion-actual {
     background-color: #e6ffe6; /* Fondo verde muy claro */
     color: #1e8449; /* Texto verde oscuro */
