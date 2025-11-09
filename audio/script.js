@@ -1,8 +1,9 @@
 // 1. DEFINICIÓN DE LA LISTA DE CANCIONES (¡VERIFICA TUS RUTAS Y NOMBRES DE ARCHIVO!)
 let playlist = [
-    { id: 131, title: "ALEJANDRO JAEN - a super escondidas", duration: "0:00", src: "./audio/escondidas.mp3" },
-    { id: 132, title: "NIGEL SCOTT - Disco Salva", duration: "0:00", src: "./audio/Nigel-Scott-Disco-Salva.mp3" },
-    { id: 133, title: "CANCIÓN DE PRUEBA 3", duration: "0:00", src: "./audio/cancion-ejemplo-3.mp3" },
+    { id: 133, title: "BERTIN OSBORNE - llueve", duration: "0:00", src: "./audio/llueve.mp3" },
+    { id: 131, title: "ALEJANDRO JAEN - a escondidas", duration: "0:00", src: "./audio/escondidas.mp3" },
+    { id: 132, title: "MANZANERO - por volverte a ver", duration: "0:00", src: "./audio/por volverte a ver.mp3" },
+    { id: 133, title: "MASSE - tu fotografia", duration: "0:00", src: "./audio/tu fotografia.mp3" },
     // AGREGA TUS OTRAS CANCIONES AQUÍ
 ];
 
@@ -274,3 +275,4 @@ if (volumeControl) {
         audioPlayer.volume = volumeControl.value;
     });
 }
+
