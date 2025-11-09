@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor MP3 Personalizado</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+
+    <div class="reproductor-container">
+        <div class="header-reproductor">
+            <div class="info-track">
+                <span class="tiempo-actual">00:00:00</span>
+                <h3 class="track-actual-titulo">DOMINIK POINTVOGL - Nova Bossa</h3>
+                <p class="track-details">MP3 | 44 kHz | 128 kbps | Stereo</p>
+            </div>
+
+            <div class="controles-audio">
+                <button id="prev-btn">⏮️</button>
+                <button id="play-pause-btn">▶️</button>
+                <button id="next-btn">⏭️</button>
+                <button id="stop-btn">⏸️</button>
+            </div>
+        </div>
+
+        <ul id="playlist" class="lista-reproduccion">
+            </ul>
+        
+        <audio id="audio-player" src=""></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+/* Estilos generales y fondo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Contenedor principal del reproductor */
+.reproductor-container {
+    width: 400px; /* Ajusta el ancho según lo necesites */
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Estilo del encabezado/controles */
+.header-reproductor {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+
+.info-track h3 {
+    margin: 5px 0 2px 0;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.track-details {
+    font-size: 0.75em;
+    color: #999;
+    margin: 0;
+}
+
+/* Estilos de botones de control */
+.controles-audio button {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    margin: 0 5px;
+    color: #666;
+    transition: color 0.2s;
+}
+
+.controles-audio button:hover {
+    color: #4CAF50; /* Color de resaltado verde */
+}
+
+/* Estilos de la lista de reproducción */
+.lista-reproduccion {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cancion-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9em;
+}
+
+.cancion-item:last-child {
+    border-bottom: none;
+}
+
+.cancion-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* **ESTILO CLAVE:** Resaltar la canción actualmente seleccionada (como el fondo verde en tu imagen) */
+.cancion-actual {
+    background-color: #e6ffe6; /* Fondo verde muy claro */
+    color: #1e8449; /* Texto verde oscuro */
+    font-weight: bold;
+}
