@@ -1,24 +1,19 @@
-// 1. Declaramos 'playlist' como una variable que se llenará dinámicamente
-let playlist = [];
+let playlist = []; // Esta lista se llenará con los datos del JSON
 
-// 2. Obtener elementos del DOM (igual que antes)
+// Obtener elementos del DOM
 const audioPlayer = document.getElementById('audio-player');
 const playlistUl = document.getElementById('playlist');
 const playPauseBtn = document.getElementById('play-pause-btn');
 const nextBtn = document.getElementById('next-btn');
 const prevBtn = document.getElementById('prev-btn');
 const trackTitle = document.querySelector('.track-actual-titulo');
-// const trackDetails = document.querySelector('.track-details'); // No usado en este ejemplo
-// const tiempoActual = document.querySelector('.tiempo-actual'); // No usado en este ejemplo
 
-let currentTrackIndex = 0; // Índice de la canción que se está reproduciendo
+let currentTrackIndex = 0;
 
-// ----------------------------------------------------
-// FUNCIONES DE CONTROL (Se mantienen iguales)
-// ----------------------------------------------------
+// --- Funciones de Control ---
 
 function loadTrack(index) {
-    if (playlist.length === 0) return; // Si la lista está vacía, no hace nada
+    if (playlist.length === 0) return;
 
     currentTrackIndex = index;
     const track = playlist[index];
@@ -34,10 +29,10 @@ function loadTrack(index) {
 function togglePlay() {
     if (audioPlayer.paused) {
         audioPlayer.play();
-        playPauseBtn.textContent = '⏸️'; // Símbolo de Pausa
+        playPauseBtn.textContent = '⏸️'; 
     } else {
         audioPlayer.pause();
-        playPauseBtn.textContent = '▶️'; // Símbolo de Play
+        playPauseBtn.textContent = '▶️'; 
     }
 }
 
@@ -57,6 +52,16 @@ function prevTrack() {
     playPauseBtn.textContent = '⏸️';
 }
 
+function highlightCurrentTrack() {
+    const items = playlistUl.querySelectorAll('.cancion-item');
+    items.forEach((item, index) => {
+        item.classList.remove('cancion-actual');
+        if (index === currentTrackIndex) {
+            item.classList.add('cancion-actual');
+        }
+    });
+}
+
 function renderPlaylist() {
     playlistUl.innerHTML = '';
     
@@ -64,7 +69,7 @@ function renderPlaylist() {
         const li = document.createElement('li');
         li.classList.add('cancion-item');
         li.dataset.index = index;
-        // Muestra el ID y el Título generado dinámicamente
+        
         li.innerHTML = `
             <span>${track.id}. ${track.title}</span>
             <span>${track.duration}</span>
@@ -80,55 +85,32 @@ function renderPlaylist() {
     });
 }
 
-function highlightCurrentTrack() {
-    const items = playlistUl.querySelectorAll('.cancion-item');
-    items.forEach((item, index) => {
-        item.classList.remove('cancion-actual');
-        if (index === currentTrackIndex) {
-            item.classList.add('cancion-actual');
-        }
-    });
-}
-
-// ----------------------------------------------------
-// FUNCIÓN CLAVE: Cargar la lista dinámicamente
-// ----------------------------------------------------
+// --- Función de Carga (JSON) ---
 
 async function fetchAndInitializePlayer() {
     try {
-        // Hacemos una petición al archivo PHP para obtener el JSON de la playlist
-        const response = await fetch('get_playlist.php'); 
-        const dynamicPlaylist = await response.json();
+        const response = await fetch('playlist.json'); 
+        const dynamicPlaylist = await response.json(); 
         
         if (dynamicPlaylist.length > 0) {
-            // Asigna la lista dinámica a la variable global 'playlist'
             playlist = dynamicPlaylist; 
-            
-            // 1. Renderiza la interfaz de la lista
             renderPlaylist(); 
-            // 2. Carga la primera canción y la prepara para la reproducción
             loadTrack(currentTrackIndex); 
-            
-            console.log(`Lista cargada exitosamente. Total: ${playlist.length} canciones.`);
         } else {
-            trackTitle.textContent = 'No se encontraron canciones en la carpeta "audio/"';
+            trackTitle.textContent = 'ERROR: La lista JSON está vacía.';
         }
         
     } catch (error) {
-        console.error('Error al cargar la lista de reproducción. ¿Está el servidor PHP funcionando?', error);
-        trackTitle.textContent = 'ERROR DE CARGA: Verifique el servidor y el archivo get_playlist.php';
+        console.error('Error al cargar la lista JSON. Asegúrate de que "playlist.json" existe y está bien formado.', error);
+        trackTitle.textContent = 'ERROR DE CARGA: Verifique el archivo playlist.json';
     }
 }
 
-// ----------------------------------------------------
-// Inicialización y Eventos
-// ----------------------------------------------------
+// --- Inicialización y Eventos ---
 
-// Llamar a la función de inicialización al cargar la ventana
 window.onload = fetchAndInitializePlayer;
 
-// Asignar eventos a los botones
 playPauseBtn.addEventListener('click', togglePlay);
 nextBtn.addEventListener('click', nextTrack);
 prevBtn.addEventListener('click', prevTrack);
-audioPlayer.addEventListener('ended', nextTrack); // Al terminar, reproduce la siguiente
+audioPlayer.addEventListener('ended', nextTrack);
