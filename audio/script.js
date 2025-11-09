@@ -4,6 +4,18 @@ let playlist = [
     { id: 131, title: "ALEJANDRO JAEN - a escondidas", duration: "0:00", src: "./audio/escondidas.mp3" },
     { id: 132, title: "MANZANERO - por volverte a ver", duration: "0:00", src: "./audio/por volverte a ver.mp3" },
     { id: 133, title: "MASSE - tu fotografia", duration: "0:00", src: "./audio/tu fotografia.mp3" },
+        { id: 133, title: "BERTIN OSBORNE - llueve", duration: "0:00", src: "./audio/llueve.mp3" },
+    { id: 131, title: "ALEJANDRO JAEN - a escondidas", duration: "0:00", src: "./audio/escondidas.mp3" },
+    { id: 132, title: "MANZANERO - por volverte a ver", duration: "0:00", src: "./audio/por volverte a ver.mp3" },
+    { id: 133, title: "MASSE - tu fotografia", duration: "0:00", src: "./audio/tu fotografia.mp3" },
+        { id: 133, title: "BERTIN OSBORNE - llueve", duration: "0:00", src: "./audio/llueve.mp3" },
+    { id: 131, title: "ALEJANDRO JAEN - a escondidas", duration: "0:00", src: "./audio/escondidas.mp3" },
+    { id: 132, title: "MANZANERO - por volverte a ver", duration: "0:00", src: "./audio/por volverte a ver.mp3" },
+    { id: 133, title: "MASSE - tu fotografia", duration: "0:00", src: "./audio/tu fotografia.mp3" },
+        { id: 133, title: "BERTIN OSBORNE - llueve", duration: "0:00", src: "./audio/llueve.mp3" },
+    { id: 131, title: "ALEJANDRO JAEN - a escondidas", duration: "0:00", src: "./audio/escondidas.mp3" },
+    { id: 132, title: "MANZANERO - por volverte a ver", duration: "0:00", src: "./audio/por volverte a ver.mp3" },
+    { id: 133, title: "MASSE - tu fotografia", duration: "0:00", src: "./audio/tu fotografia.mp3" },
     // AGREGA TUS OTRAS CANCIONES AQUÍ
 ];
 
@@ -275,4 +287,5 @@ if (volumeControl) {
         audioPlayer.volume = volumeControl.value;
     });
 }
+
 
