@@ -1,5 +1,6 @@
 // ----------------- LISTA DE CANCIONES -----------------
 let playlist = [
+    { title: "Player - it's for you", duration: "00:00", src: "./audio/for you.mp3" },
     { title: "Level 42 - something about you", duration: "00:00", src: "./audio/something.mp3" },
     { title: "Falco - der Kommissar", duration: "00:00", src: "./audio/der kommissar.mp3" },
     { title: "Glenn Frey - you belong to the city", duration: "00:00", src: "./audio/you belong.mp3" },
@@ -399,4 +400,5 @@ window.addEventListener('load', () => {
     if (volumeControl) volumeControl.addEventListener('input', () => {
         audioPlayer.volume = Number(volumeControl.value);
     });
+
 });
