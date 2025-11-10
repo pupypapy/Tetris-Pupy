@@ -1,5 +1,6 @@
 // ----------------- LISTA DE CANCIONES -----------------
 let playlist = [
+    { title: "Survivor - the search is over", duration: "00:00", src: "./audio/search_over.mp3" },
     { title: "kenny loggins - meet me half way", duration: "00:00", src: "./audio/way.mp3" },
     { title: "Player - it's for you", duration: "00:00", src: "./audio/for you.mp3" },
     { title: "Level 42 - something about you", duration: "00:00", src: "./audio/something.mp3" },
@@ -403,6 +404,7 @@ window.addEventListener('load', () => {
     });
 
 });
+
 
 
 
