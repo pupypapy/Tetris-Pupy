@@ -20,8 +20,8 @@ body {
 /* --- Encabezado y Barra de Progreso --- */
 .header-reproductor {
     padding: 15px 0 5px 0; 
-    background-color: #252525; /* Fondo del encabezado un poco más claro */
-    border-bottom: 1px solid #3a3a3a; /* Borde oscuro */
+    background-color: #252525; 
+    border-bottom: 1px solid #3a3a3a; 
 }
 
 .info-track {
@@ -35,11 +35,11 @@ body {
 
 .tiempo-actual, .tiempo-total {
     font-size: 0.75em;
-    color: #aaaaaa; /* Texto gris claro */
+    color: #aaaaaa; 
     font-weight: bold;
 }
 
-/* --- ESTILO CLAVE: TÍTULO CON MARQUESINA CSS --- */
+/* --- TÍTULO CON MARQUESINA CSS --- */
 .track-actual-titulo {
     flex-grow: 1;
     text-align: center;
@@ -48,9 +48,9 @@ body {
     color: #ffffff; 
     
     /* PROPIEDADES PARA MARQUESINA */
-    white-space: nowrap; /* Fuerza el texto en una sola línea */
-    overflow: hidden; /* Oculta el texto que se desborda */
-    text-overflow: clip; /* Asegura que no aparezcan puntos suspensivos */
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: clip; 
     display: inline-block; 
     width: 100%; 
     
@@ -101,7 +101,7 @@ body {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-/* --- Controles de Audio y Volumen --- */
+/* --- Controles de Audio y Volumen (Estilos Base PC) --- */
 .controles-audio {
     padding: 15px;
     display: flex;
@@ -208,17 +208,17 @@ body {
     opacity: 0.6; 
 }
 
-/* --- ESTILOS DEL VISUALIZADOR (Ancho, Denso y Posicionado) --- */
+/* --- ESTILOS DEL VISUALIZADOR --- */
 .css-visualizer {
     display: flex;
     justify-content: center;
     align-items: flex-end; 
     height: 30px; 
     width: 90%; 
-    margin: 5px auto; /* Margen ajustado para nueva posición */
+    margin: 5px auto; 
     opacity: 0; 
     transition: opacity 0.3s ease-in-out;
-    gap: 1px; /* Espaciado reducido para densidad */
+    gap: 1px; 
 }
 
 .css-visualizer.active {
@@ -282,3 +282,45 @@ body {
 .css-visualizer.active .bar:nth-child(23) { animation: pulse-bar-3 1.1s infinite alternate; animation-delay: 1.3s; }
 .css-visualizer.active .bar:nth-child(24) { animation: pulse-bar-4 0.8s infinite alternate; animation-delay: 1.4s; }
 .css-visualizer.active .bar:nth-child(25) { animation: pulse-bar-5 1.0s infinite alternate; animation-delay: 1.5s; }
+
+
+/* ========================================================= */
+/* === AJUSTES DE RESPUESTA PARA MÓVILES (Menos de 480px) === */
+/* ========================================================= */
+@media (max-width: 480px) {
+
+    /* --- 1. ARREGLO DE CONTROLES Y VOLUMEN (Botones Deformados) --- */
+    .controles-audio {
+        padding: 10px 5px; 
+        justify-content: space-around; 
+    }
+    
+    .controles-audio button {
+        width: 38px; 
+        height: 38px;
+        margin: 0 2px; 
+    }
+    
+    .controles-audio button i {
+        font-size: 1.1em; 
+        line-height: 38px; 
+    }
+
+    #volumen-control {
+        width: 80px; 
+    }
+
+    /* --- 2. ARREGLO DE LA MARQUESINA (Título no visible) --- */
+    .info-track {
+        padding: 0 10px; 
+    }
+
+    .tiempo-actual, .tiempo-total {
+        font-size: 0.7em; 
+    }
+    
+    .track-actual-titulo {
+        margin: 0 5px !important; 
+        font-size: 1.1em; 
+    }
+}
