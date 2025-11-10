@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor MP3 Espectro Dinámico (CSS)</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+<link rel="stylesheet" href="style.css?v=5">
+</head>
+<body>
+
+    <div class="reproductor-container">
+
+        <div class="header-reproductor">
+            
+            <div id="loading-spinner" class="hidden">
+                <i class="fas fa-spinner fa-spin"></i>
+            </div>
+
+            <div id="css-visualizer" class="css-visualizer">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <div class="info-track">
+                <span class="tiempo-actual">00:00</span>
+                <h3 class="track-actual-titulo">Selecciona una canción</h3>
+                <span class="tiempo-total">00:00</span>
+            </div>
+            
+            <div class="barra-progreso-container">
+                <input type="range" id="barra-progreso" min="0" max="100" value="0">
+            </div>
+
+        </div>
+
+        <div class="controles-audio">
+            
+            <button id="shuffle-btn" class="control-mode">
+                <i class="fas fa-random"></i>
+            </button>
+            
+            <button id="prev-btn">
+                <i class="fas fa-backward"></i>
+            </button>
+            
+            <button id="play-pause-btn">
+                <i class="fas fa-play"></i> 
+            </button>
+            
+            <button id="stop-btn">
+                <i class="fas fa-stop"></i>
+            </button>
+
+            <button id="next-btn">
+                <i class="fas fa-forward"></i>
+            </button>
+
+            <button id="repeat-btn" class="control-mode">
+                <i class="fas fa-redo"></i>
+            </button>
+
+            <input type="range" id="volumen-control" min="0" max="1" step="0.01" value="1">
+        </div>
+        
+        <hr>
+
+        <ul id="playlist" class="lista-reproduccion">
+        </ul>
+
+    </div>
+    
+    <audio id="audio-player"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
