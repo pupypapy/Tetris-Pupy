@@ -1,6 +1,6 @@
 // ----------------- LISTA DE CANCIONES -----------------
 let playlist = [
-    { title: "kenny loggins meet me half way", duration: "00:00", src: "./audio/way.mp3" }, en el respeto oye y cómo explicas los 10 años antes
+    { title: "kenny loggins meet me half way", duration: "00:00", src: "./audio/way.mp3" },
     { title: "Player - it's for you", duration: "00:00", src: "./audio/for you.mp3" },
     { title: "Level 42 - something about you", duration: "00:00", src: "./audio/something.mp3" },
     { title: "Falco - der Kommissar", duration: "00:00", src: "./audio/der kommissar.mp3" },
@@ -403,5 +403,6 @@ window.addEventListener('load', () => {
     });
 
 });
+
 
 
