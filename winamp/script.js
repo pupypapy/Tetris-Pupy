@@ -1,16 +1,16 @@
 // ----------------- LISTA DE CANCIONES -----------------
 let playlist = [
-    { title: "Don Henley - new york minute", duration: "00:00", src: "./audio/minute.mp3" },
-    { title: "Survivor - the search is over", duration: "00:00", src: "./audio/search_over.mp3" },
+    { title: "Level 42 - lessons in love", duration: "00:00", src: "./audio/lessons.mp3" },
     { title: "kenny loggins - meet me half way", duration: "00:00", src: "./audio/way.mp3" },
-    { title: "Player - it's for you", duration: "00:00", src: "./audio/for you.mp3" },
-    { title: "Level 42 - something about you", duration: "00:00", src: "./audio/something.mp3" },
-    { title: "Falco - der Kommissar", duration: "00:00", src: "./audio/der kommissar.mp3" },
-    { title: "Glenn Frey - you belong to the city", duration: "00:00", src: "./audio/you belong.mp3" },
-    { title: "Eddy Grant - electric avenue", duration: "00:00", src: "./audio/electric avenue.mp3" },
-    { title: "The Romantics - talking in your sleep", duration: "00:00", src: "./audio/talking in your sleep.mp3" },
     { title: "Rockwell - somebody's watching me", duration: "00:00", src: "./audio/somebody watching me.mp3" },
     { title: "Glenn Frey - the one you love", duration: "00:00", src: "./audio/the one love.mp3" },
+    { title: "Level 42 - something about you", duration: "00:00", src: "./audio/something.mp3" },
+    { title: "Cliff Richard - ocean deep", duration: "00:00", src: "./audio/ocean.mp3" },
+    { title: "Don Henley - new york minute", duration: "00:00", src: "./audio/minute.mp3" },
+    { title: "Survivor - the search is over", duration: "00:00", src: "./audio/search_over.mp3" },
+    { title: "Player - it's for you", duration: "00:00", src: "./audio/for you.mp3" },
+    { title: "Falco - der Kommissar", duration: "00:00", src: "./audio/der kommissar.mp3" },
+    { title: "Glenn Frey - you belong to the city", duration: "00:00", src: "./audio/you belong.mp3" },
     { title: "DeBarge - who's holding donna now", duration: "00:00", src: "./audio/whos holding.mp3" },
     { title: "Robbie Dupree - steal away", duration: "00:00", src: "./audio/steal away.mp3" },
     { title: "Level 42 - it's over", duration: "00:00", src: "./audio/over.mp3" },
@@ -18,9 +18,7 @@ let playlist = [
     { title: "Bobby Goldsboro - summer the first time", duration: "00:00", src: "./audio/summer.mp3" },
     { title: "Real Life - send me an angel", duration: "00:00", src: "./audio/send me.mp3" },
     { title: "Andy Gibb - love is thicker than water", duration: "00:00", src: "./audio/love.mp3" },
-    { title: "Cliff Richard - ocean deep", duration: "00:00", src: "./audio/ocean.mp3" },
     { title: "Crystal Gayle & Gary Morris - one more try for love", duration: "00:00", src: "./audio/one more.mp3" },
-    { title: "Level 42 - lessons in love", duration: "00:00", src: "./audio/lessons.mp3" },
     { title: "Morris Albert - shes my girl", duration: "00:00", src: "./audio/shes my girl.mp3" },
     { title: "Soft Cell - tainted love", duration: "00:00", src: "./audio/tainted.mp3" },
     { title: "Peaches & Herb - reunited", duration: "00:00", src: "./audio/reunited.mp3" },
@@ -405,6 +403,7 @@ window.addEventListener('load', () => {
     });
 
 });
+
 
 
 
